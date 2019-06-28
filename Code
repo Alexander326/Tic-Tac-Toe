@@ -1,0 +1,393 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+/// <summary>
+/// Simple Tic Tac Toe game
+/// 
+/// Player 1 = X
+/// Plsyer 2 = O
+/// </summary>
+namespace Tic_Tac_Toe
+{
+    public partial class Form1 : Form
+    {
+        #region Initializ Game
+
+        public int player = 0;
+        public bool players1 = false;
+        public bool players2 = false;
+        public Button Button;
+
+        public Form1()
+        {
+            InitializeComponent();
+            label1.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+        }
+
+        #endregion
+
+        #region Button Grid
+
+        /// <summary>
+        /// All nine buttons on form1 for the players to press on to lay out there (X or O)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // When the button is press print player 1 or player 2 (player1 = X, player2 = O)
+            pickPlayer((Button)sender);
+
+            // Restarts the application
+            allButtons();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // When the button is press print player 1 or player 2 (player1 = X, player2 = O)
+            pickPlayer((Button)sender);
+
+            // Restarts the application
+            allButtons();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // When the button is press print player 1 or player 2 (player1 = X, player2 = O)
+            pickPlayer((Button)sender);
+
+            // Restarts the application
+            allButtons();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // When the button is press print player 1 or player 2 (player1 = X, player2 = O)
+            pickPlayer((Button)sender);
+
+            // Restarts the application
+            allButtons();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // When the button is press print player 1 or player 2 (player1 = X, player2 = O)
+            pickPlayer((Button)sender);
+
+            // Restarts the application
+            allButtons();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            // When the button is press print player 1 or player 2 (player1 = X, player2 = O)
+            pickPlayer((Button)sender);
+
+            // Restarts the application
+            allButtons();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            // When the button is press print player 1 or player 2 (player1 = X, player2 = O)
+            pickPlayer((Button)sender);
+
+            // Restarts the application
+            allButtons();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            // When the button is press print player 1 or player 2 (player1 = X, player2 = O)
+            pickPlayer((Button)sender);
+
+            // Restarts the application
+            allButtons();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            // When the button is press print player 1 or player 2 (player1 = X, player2 = O)
+            pickPlayer((Button)sender);
+
+            // Restarts the application
+            allButtons();
+        }
+
+        #endregion
+
+        #region Choose Player
+
+        /// <summary>
+        /// When a button is press it Picks player2 every second time and prints O, else print X on button grid
+        /// </summary>
+
+        // Picks player2 or player1 of it is there turn
+        private void pickPlayer(Button button)
+        {
+            // If it's player 2 turn print O
+            if (player % 2 == 0)
+            {
+
+                // Goes to next round
+                player++;
+
+                // Writes X on the button that was pressed
+                button.Text = "O";
+
+                // Sets the color on the text in the button
+                button.ForeColor = Color.SeaGreen;
+
+                // Checks if button is O
+                checkTwo();
+
+                // Disables the button after pressed the 1st time
+                button.Enabled = false;
+            }
+            // If it's player 1 turn print X
+            else
+            {
+                // Goes to next round
+                player++;
+
+                // Writes X on the button that was pressed
+                button.Text = "X";
+
+                // Sets the color on the text in the button
+                button.ForeColor = Color.RoyalBlue;
+
+                // Checks if button is X
+                checkOne();
+
+                // Disables the button after pressed the 1st time
+                button.Enabled = false;
+            }
+
+            // Checks if some one has won
+            winLabel();
+        }
+
+        #endregion
+
+        #region Check Player 1
+
+        /// <summary>
+        /// Checks if player 1 has won!
+        /// </summary>
+
+        public void checkOne()
+        {
+            // Checks all rows if all the buttons in the row is X, then player 1 won
+            if (button1.Text == "X" && button2.Text == "X" && button3.Text == "X")
+            {
+                // If all statment are true, player one wins
+                playerOneWins();
+            }
+            else if (button4.Text == "X" && button5.Text == "X" && button6.Text == "X")
+            {
+                // If all statment are true, player one wins
+                playerOneWins();
+            }
+            else if (button7.Text == "X" && button8.Text == "X" && button9.Text == "X")
+            {
+                // If all statment are true, player one wins
+                playerOneWins();
+            }
+            // Checks all colums if all buttons in the colum is X, then player 1 won
+            else if (button1.Text == "X" && button4.Text == "X" && button7.Text == "X")
+            {
+                // If all statment are true, player one wins
+                playerOneWins();
+            }
+            else if (button2.Text == "X" && button5.Text == "X" && button8.Text == "X")
+            {
+                // If all statment are true, player one wins
+                playerOneWins();
+            }
+            else if (button3.Text == "X" && button6.Text == "X" && button9.Text == "X")
+            {
+                // If all statment are true, player one wins
+                playerOneWins();
+            }
+            // Checks both diagonal sides if all buttons is x, then player 1 won
+            else if (button1.Text == "X" && button5.Text == "X" && button9.Text == "X")
+            {
+                // If all statment are true, player one wins
+                playerOneWins();
+            }
+            else if (button3.Text == "X" && button5.Text == "X" && button7.Text == "X")
+            {
+                // If all statment are true, player one wins
+                playerOneWins();
+            }
+            else
+            {
+                // Message thhat player 1 has won
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                players1 = false ;
+            }
+        }
+
+        #endregion
+
+        #region Check Player 2
+
+        /// <summary>
+        /// Checks if player 2 has won!
+        /// </summary>
+
+        public void checkTwo()
+        {
+            // Checks all rows if all the buttons in the row is X, then player 1 won
+            if (button1.Text == "O" && button2.Text == "O" && button3.Text == "O")
+            {
+                // If all statment are true, player one wins
+                playerTwoWins();
+            }
+            else if (button4.Text == "O" && button5.Text == "O" && button6.Text == "O")
+            {
+                // If all statment are true, player one wins
+                playerTwoWins();
+            }
+            else if (button7.Text == "O" && button8.Text == "O" && button9.Text == "O")
+            {
+                // If all statment are true, player one wins
+                playerTwoWins();
+            }
+            // Checks all colums if all buttons in the colum is X, then player 1 won
+            else if (button1.Text == "O" && button4.Text == "O" && button7.Text == "O")
+            {
+                // If all statment are true, player one wins
+                playerTwoWins();
+            }
+            else if (button2.Text == "O" && button5.Text == "O" && button8.Text == "O")
+            {
+                // If all statment are true, player one wins
+                playerTwoWins();
+            }
+            else if (button3.Text == "O" && button6.Text == "O" && button9.Text == "O")
+            {
+                // If all statment are true, player one wins
+                playerTwoWins();
+            }
+            // Checks both diagonal sides if all buttons is x, then player 1 won
+            else if (button1.Text == "O" && button5.Text == "O" && button9.Text == "O")
+            {
+                // If all statment are true, player one wins
+                playerTwoWins();
+            }
+            else if (button3.Text == "O" && button5.Text == "O" && button7.Text == "O")
+            {
+                // If all statment are true, player one wins
+                playerTwoWins();
+            }
+            else
+            {
+                // Message thhat player 1 has won
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                players2 = false;
+            }
+        }
+
+        #endregion
+
+        #region Check All Buttons
+
+        public void allButtons()
+        {
+            // Checks if all buttons is pressed, if so it restarts the game
+            if (player < 9)
+            {
+                // Prints the Game round in the Console
+                Console.WriteLine(player);
+            }
+            else if (player >= 9 && players1 == false && players2 == false)
+            {
+                // Restart Application
+                Application.Restart();
+            }
+        }
+
+        #endregion
+
+        #region Winning Screen
+
+        public void playerOneWins()
+        {
+            label1.Visible = true;
+            label2.Visible = true;
+            label2.Refresh();
+            label3.Visible = true;
+            label3.Refresh();
+            players1 = true;
+        }
+
+        public void playerTwoWins()
+        {
+            label1.Visible = true;
+            label2.Visible = true;
+            label2.Refresh();
+            label3.Visible = true;
+            label3.Refresh();
+            players2 = true;
+        }
+
+        public void winLabel()
+        {
+            if (players1 == true)
+            {
+                label1.Font = new Font("Microsoft Sans Serif", 48);
+                label1.ForeColor = Color.RoyalBlue;
+                label1.Text = "Player 1 won!";
+                label1.Refresh();
+                System.Threading.Thread.Sleep(200);
+                label2.Font = new Font("Microsoft Sans Serif", 16);
+                label2.ForeColor = Color.White;
+                label2.Text = "Game round: " + player;
+                label2.Refresh();
+                System.Threading.Thread.Sleep(2500);
+                Application.Restart();
+            }
+            else if (players2 == true)
+            {
+                label1.Font = new Font("Microsoft Sans Serif", 48);
+                label1.ForeColor = Color.SeaGreen;
+                label1.Text = "Player 2 won!";
+                label1.Refresh();
+                System.Threading.Thread.Sleep(200);
+                label2.Font = new Font("Microsoft Sans Serif", 16);
+                label2.ForeColor = Color.White;
+                label2.Text = "Game round: " + player;
+                label2.Refresh();
+                System.Threading.Thread.Sleep(2500);
+                Application.Restart();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+    }
+}
